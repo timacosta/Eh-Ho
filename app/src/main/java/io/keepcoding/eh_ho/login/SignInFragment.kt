@@ -34,6 +34,11 @@ class SignInFragment : Fragment() {
                 setSelection(it.password.length)
             }
         }
+
+
+
+
+        //TODO: Include validations
         vm.signInEnabled.observe(viewLifecycleOwner) {
             buttonLogin.isEnabled = it
         }

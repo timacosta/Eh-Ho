@@ -35,6 +35,7 @@ class TopicsAdapter(diffUtilItemCallback: DiffUtil.ItemCallback<Topic> = DIFF) :
 
         fun bind(topic: Topic) {
             binding.title.text = topic.title
+            //TODO: bin more details
         }
     }
 }

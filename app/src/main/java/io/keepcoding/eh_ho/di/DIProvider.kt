@@ -20,6 +20,7 @@ object DIProvider {
     }
     private val client: Client by lazy { Client(DISCOURSE_URL, DISCOURSE_API_KEY, okHttpClient) }
     private val repository: Repository by lazy { Repository(client) }
+    //TODO: Include emailValidator / Password Validator
     val loginViewModelProviderFactory: LoginViewModel.LoginViewModelProviderFactory by lazy { LoginViewModel.LoginViewModelProviderFactory(repository) }
     val topicsViewModelProviderFactory: TopicsViewModel.TopicsViewModelProviderFactory by lazy { TopicsViewModel.TopicsViewModelProviderFactory(repository) }
 

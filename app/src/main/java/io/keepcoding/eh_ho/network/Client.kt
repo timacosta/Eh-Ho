@@ -47,6 +47,8 @@ class Client(
         )
     }
 
+    //TODO: create getPosts
+
     private fun <T> runRequest(
             request: Request,
             callback: Callback<T>,

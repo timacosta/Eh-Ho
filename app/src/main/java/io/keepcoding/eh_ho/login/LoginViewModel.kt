@@ -1,5 +1,8 @@
+
+
 package io.keepcoding.eh_ho.login
 
+import androidx.annotation.StringRes
 import androidx.lifecycle.*
 import io.keepcoding.eh_ho.model.LogIn
 import io.keepcoding.eh_ho.repository.Repository
@@ -9,6 +12,7 @@ class LoginViewModel(private val repository: Repository) : ViewModel() {
     private val _state: MutableLiveData<State> = MutableLiveData<State>().apply { postValue(State.SignIn) }
     private val _signInData = MutableLiveData<SignInData>().apply { postValue(SignInData("", "")) }
     private val _signUpData = MutableLiveData<SignUpData>().apply { postValue(SignUpData("", "", "", "")) }
+
     val state: LiveData<State> = _state
     val signInData: LiveData<SignInData> = _signInData
     val signUpData: LiveData<SignUpData> = _signUpData
@@ -24,6 +28,7 @@ class LoginViewModel(private val repository: Repository) : ViewModel() {
             State.SigningUp -> true
         }
     }
+
 
     fun onNewSignInUserName(userName: String) {
         onNewSignInData(_signInData.value?.copy(userName = userName))
@@ -120,3 +125,7 @@ private fun LoginViewModel.SignUpData.isValid(): Boolean = userName.isNotBlank()
         email.isNotBlank() &&
         password == confirmPassword &&
         password.isNotBlank()
+
+
+
+

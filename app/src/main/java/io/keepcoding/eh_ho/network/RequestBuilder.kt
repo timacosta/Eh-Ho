@@ -20,9 +20,13 @@ class RequestBuilder(private val baseUrl: String, private val apiKey: String) {
 
 	fun topicsRequest(): Request = createGetRequest(topicsEndpoint())
 
+	//TODO: postsRequest
+
 	private fun signInEndpoint(userName: String): HttpUrl = buildHttpUrl("users/$userName.json")
 	private fun signUpEndpoint(): HttpUrl = buildHttpUrl("users")
 	private fun topicsEndpoint(): HttpUrl = buildHttpUrl("latest.json")
+
+	//TODO: postsEndoint
 
 	private fun createAuthenticatedPostRequest(
 		httpUrl: HttpUrl,
