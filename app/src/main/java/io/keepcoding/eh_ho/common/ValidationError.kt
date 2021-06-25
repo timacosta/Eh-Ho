@@ -1,6 +1,7 @@
 package io.keepcoding.eh_ho.common
 
-class ValidationError {
+//using objects because of https://www.baeldung.com/kotlin/objects, "an object instead represents a single static instance"
+object ValidationError {
 
     private val PATTERN_PASSWORD = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@\$!%*#?&])[A-Za-z\\d@\$!%*#?&]{8,}\$"
 

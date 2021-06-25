@@ -2,8 +2,8 @@
 
 package io.keepcoding.eh_ho.login
 
-import androidx.annotation.StringRes
 import androidx.lifecycle.*
+import io.keepcoding.eh_ho.common.ValidationError
 import io.keepcoding.eh_ho.model.LogIn
 import io.keepcoding.eh_ho.repository.Repository
 
@@ -12,12 +12,17 @@ class LoginViewModel(private val repository: Repository) : ViewModel() {
     private val _state: MutableLiveData<State> = MutableLiveData<State>().apply { postValue(State.SignIn) }
     private val _signInData = MutableLiveData<SignInData>().apply { postValue(SignInData("", "")) }
     private val _signUpData = MutableLiveData<SignUpData>().apply { postValue(SignUpData("", "", "", "")) }
+    private val _signInError: MutableLiveData<Boolean> = MutableLiveData(false)
 
     val state: LiveData<State> = _state
     val signInData: LiveData<SignInData> = _signInData
     val signUpData: LiveData<SignUpData> = _signUpData
     val signInEnabled: LiveData<Boolean> = Transformations.map(_signInData) { it?.isValid() ?: false }
     val signUpEnabled: LiveData<Boolean> = Transformations.map(_signUpData) { it?.isValid() ?: false }
+
+    val validUsername: LiveData<Boolean> = Transformations.map(_signUpData) { it.isUsernameValid() ?: false}
+    val validPassword: LiveData<Boolean> = Transformations.map(_signUpData) {it.isPasswordValid() ?: false}
+
     val loading: LiveData<Boolean> = Transformations.map(_state) {
         when (it) {
             State.SignIn,
@@ -28,6 +33,7 @@ class LoginViewModel(private val repository: Repository) : ViewModel() {
             State.SigningUp -> true
         }
     }
+
 
 
     fun onNewSignInUserName(userName: String) {
@@ -76,7 +82,7 @@ class LoginViewModel(private val repository: Repository) : ViewModel() {
                 if (it is LogIn.Success) {
                     _state.postValue(State.SignedIn)
                 } else {
-                    //
+                    _signInError.postValue(false)
                 }
             }
         }
@@ -111,6 +117,7 @@ class LoginViewModel(private val repository: Repository) : ViewModel() {
         val confirmPassword: String,
     )
 
+
     class LoginViewModelProviderFactory(private val repository: Repository) : ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T = when (modelClass) {
             LoginViewModel::class.java -> LoginViewModel(repository) as T
@@ -121,10 +128,22 @@ class LoginViewModel(private val repository: Repository) : ViewModel() {
 
 
 private fun LoginViewModel.SignInData.isValid(): Boolean = userName.isNotBlank() && password.isNotBlank()
+
+
+
 private fun LoginViewModel.SignUpData.isValid(): Boolean = userName.isNotBlank() &&
         email.isNotBlank() &&
         password == confirmPassword &&
         password.isNotBlank()
+
+private fun LoginViewModel.SignUpData.isUsernameValid() : Boolean = ValidationError.validateUserName(userName)
+private fun LoginViewModel.SignUpData.isPasswordValid() : Boolean = ValidationError.validatePassword(password)
+
+
+
+
+
+
 
 
 
