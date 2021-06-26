@@ -35,6 +35,7 @@ fun parseTopics(json: String?): List<Topic> = json?.let {
     (0 until topicsJsonArray.length()).map { index ->
         val topicJsonObject = topicsJsonArray.getJSONObject(index)
         Topic(
+            //TODO: add more values
             id = topicJsonObject.getInt("id"),
             title = topicJsonObject.getString("title"),
         )

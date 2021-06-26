@@ -12,4 +12,5 @@
 
     <string name="invalid_username">Username must be alphanumeric and at least 5 characters long</string>
     <string name="invalid_password">Password must be longer than 8 characters have at least one letter, number and symbol</string>
+    <string name="invalid_email">Incorrect email format</string>
 </resources>

@@ -7,11 +7,13 @@ import org.junit.jupiter.api.Test
 
 
 class ValidationErrorTest {
-    private val validationError: ValidationError = ValidationError()
+    private val validationError: ValidationError = ValidationError
     var usernameFalse = ""
     var usernameTrue = ""
     var passwordFalse = ""
     var passwordTrue = ""
+    var emailTrue = ""
+    var emailFalse = ""
 
     @BeforeEach
     fun init() {
@@ -20,6 +22,9 @@ class ValidationErrorTest {
 
         passwordFalse = "1234"
         passwordTrue = "Summer$1"
+
+        emailFalse = "name,surname@provider,com"
+        emailTrue = "name.surname@provider.com"
     }
 
     @Test
@@ -40,6 +45,18 @@ class ValidationErrorTest {
     @Test
     fun validatePasswordTrue_Test() {
         assertTrue(validationError.validatePassword(passwordTrue))
+    }
+
+    //Apparently not able to test TextUtils, See:
+    // http://tools.android.com/tech-docs/unit-testing-support#TOC-Method-...-not-mocked.-
+    @Test
+    fun validateEmailFalse_Test() {
+        assertFalse(validationError.validateEmail(emailFalse))
+    }
+
+    @Test
+    fun validateEmailTrue_Test() {
+        assertFalse(validationError.validateEmail(emailTrue))
     }
 
 }

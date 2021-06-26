@@ -35,13 +35,10 @@ class SignInFragment : Fragment() {
             }
         }
 
-
-
-
-        //TODO: Include validations
         vm.signInEnabled.observe(viewLifecycleOwner) {
             buttonLogin.isEnabled = it
         }
+
         inputUsername.apply {
             addTextChangedListener(TextChangedWatcher(vm::onNewSignInUserName))
         }
