@@ -39,7 +39,7 @@ class TopicsActivity : AppCompatActivity() {
     }
 
     private fun renderEmptyState() {
-        // Render empty state
+        binding.emptyResponse.isVisible = true
     }
 
     private fun renderLoading(loadingState: TopicsViewModel.State.LoadingTopics) {
