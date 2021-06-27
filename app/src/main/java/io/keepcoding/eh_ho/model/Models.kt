@@ -11,10 +11,11 @@ data class Topic(
     val likeCount: Int,
     val replyCount: Int,
     val lastPostedAt: String,
+    val lastPosterUsername: String,
 //    val views: Int,
 //    val pinned: Boolean,
 //    val bumped: Boolean,
-//    val lastPosterUsername: String
+
 )
 
 data class Post(

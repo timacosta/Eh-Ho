@@ -63,6 +63,20 @@
                 android:text="27/06/2021"/>
 
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_baseline_account_circle_24"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/last_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                android:text="acostim"/>
+
+
         </LinearLayout>
 
     </LinearLayout>

@@ -38,6 +38,7 @@ class TopicsAdapter(diffUtilItemCallback: DiffUtil.ItemCallback<Topic> = DIFF) :
             binding.likes.text = topic.likeCount.toString()
             binding.replies.text = topic.replyCount.toString()
             binding.date.text = topic.lastPostedAt.dropLast(14)
+            binding.lastUser.text = topic.lastPosterUsername
         }
     }
 }

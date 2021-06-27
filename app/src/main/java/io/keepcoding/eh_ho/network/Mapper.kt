@@ -40,7 +40,8 @@ fun parseTopics(json: String?): List<Topic> = json?.let {
             title = topicJsonObject.getString("title"),
             likeCount = topicJsonObject.getInt("like_count"),
             replyCount = topicJsonObject.getInt("reply_count"),
-            lastPostedAt = topicJsonObject.getString("last_posted_at")
+            lastPostedAt = topicJsonObject.getString("last_posted_at"),
+            lastPosterUsername = topicJsonObject.getString("last_poster_username")
         )
     }
 } ?: emptyList<Topic>()
