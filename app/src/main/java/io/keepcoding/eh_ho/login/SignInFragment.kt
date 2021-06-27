@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import io.keepcoding.eh_ho.R
 import io.keepcoding.eh_ho.common.TextChangedWatcher
 import io.keepcoding.eh_ho.databinding.FragmentSignInBinding
 
@@ -33,6 +34,14 @@ class SignInFragment : Fragment() {
                 setText(it.password)
                 setSelection(it.password.length)
             }
+        }
+
+        vm.validUsername.observe(viewLifecycleOwner) {
+            if(!it) inputUsername.error = getString(R.string.invalid_username)
+        }
+
+        vm.validPassword.observe(viewLifecycleOwner) {
+            if(!it) inputPassword.error = getString(R.string.invalid_password)
         }
 
         vm.signInEnabled.observe(viewLifecycleOwner) {

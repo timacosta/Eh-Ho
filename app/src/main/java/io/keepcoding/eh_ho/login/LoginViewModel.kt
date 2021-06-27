@@ -143,6 +143,8 @@ private fun LoginViewModel.SignUpData.isPasswordValid() : Boolean = ValidationEr
 private fun LoginViewModel.SignUpData.isEmailValid() : Boolean = ValidationError.validateEmail(email)
 private fun LoginViewModel.SignUpData.isPasswordEqualConfirmPassword(): Boolean = ValidationError.validateConfirmPassword(password,confirmPassword)
 
+private fun LoginViewModel.SignInData.isUsernameValid() : Boolean = ValidationError.validateUserName(userName)
+private fun LoginViewModel.SignInData.isPasswordValid() : Boolean = ValidationError.validatePassword(password)
 
 
 
