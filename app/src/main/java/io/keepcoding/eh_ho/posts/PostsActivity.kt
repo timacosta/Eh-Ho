@@ -22,7 +22,10 @@ class PostsActivity: AppCompatActivity() {
         var intent = intent
         topicID = intent.getIntExtra("topicID",0)
 
-        binding.post
+        binding.postDetails.apply {
+            adapter = postsAdapter
+
+        }
 
 
     }
