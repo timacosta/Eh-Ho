@@ -16,7 +16,7 @@ import io.keepcoding.eh_ho.posts.PostsActivity
 class TopicsActivity : AppCompatActivity() {
 
     private val binding: ActivityTopicsBinding by lazy { ActivityTopicsBinding.inflate(layoutInflater) }
-    private val topicsAdapter = TopicsAdapter()
+    private val topicsAdapter = TopicsAdapter(::openTopicDetails)
     private val vm: TopicsViewModel by viewModels { DIProvider.topicsViewModelProviderFactory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -74,6 +74,10 @@ class TopicsActivity : AppCompatActivity() {
                 topicsAdapter.submitList(loadingState.topics)
             }
         }
+    }
+
+    private fun openTopicDetails(topic: Topic) {
+        startActivity(PostsActivity.createIntent(this,topic))
     }
 
 

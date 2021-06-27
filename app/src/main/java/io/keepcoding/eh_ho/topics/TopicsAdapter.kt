@@ -8,11 +8,11 @@ import io.keepcoding.eh_ho.databinding.ViewTopicBinding
 import io.keepcoding.eh_ho.extensions.inflater
 import io.keepcoding.eh_ho.model.Topic
 
-class TopicsAdapter(diffUtilItemCallback: DiffUtil.ItemCallback<Topic> = DIFF) :
+class TopicsAdapter(private val onTopicClick: (Topic) -> Unit, diffUtilItemCallback: DiffUtil.ItemCallback<Topic> = DIFF) :
     ListAdapter<Topic, TopicsAdapter.TopicViewHolder>(diffUtilItemCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TopicViewHolder =
-        TopicViewHolder(parent)
+        TopicViewHolder(parent,onTopicClick)
 
     override fun onBindViewHolder(holder: TopicViewHolder, position: Int) =
         holder.bind(getItem(position))
@@ -26,6 +26,7 @@ class TopicsAdapter(diffUtilItemCallback: DiffUtil.ItemCallback<Topic> = DIFF) :
 
     class TopicViewHolder(
         parent: ViewGroup,
+        private val onTopicClick: (Topic) -> Unit,
         private val binding: ViewTopicBinding = ViewTopicBinding.inflate(
             parent.inflater,
             parent,
@@ -39,6 +40,7 @@ class TopicsAdapter(diffUtilItemCallback: DiffUtil.ItemCallback<Topic> = DIFF) :
             binding.replies.text = topic.replyCount.toString()
             binding.date.text = topic.lastPostedAt.dropLast(14)
             binding.lastUser.text = topic.lastPosterUsername
+            binding.root.setOnClickListener { onTopicClick(topic) }
         }
     }
 }
