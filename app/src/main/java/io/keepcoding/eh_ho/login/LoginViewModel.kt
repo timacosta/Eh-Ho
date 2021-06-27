@@ -23,6 +23,7 @@ class LoginViewModel(private val repository: Repository) : ViewModel() {
     val validUsername: LiveData<Boolean> = Transformations.map(_signUpData) { it.isUsernameValid() ?: false}
     val validPassword: LiveData<Boolean> = Transformations.map(_signUpData) {it.isPasswordValid() ?: false}
     val validEmail: LiveData<Boolean> = Transformations.map(_signUpData) {it.isEmailValid() ?: false}
+    val validConfirmPassword: LiveData<Boolean> = Transformations.map(_signUpData) { it.isPasswordEqualConfirmPassword() ?: false }
 
     val loading: LiveData<Boolean> = Transformations.map(_state) {
         when (it) {
@@ -140,6 +141,7 @@ private fun LoginViewModel.SignUpData.isValid(): Boolean = userName.isNotBlank()
 private fun LoginViewModel.SignUpData.isUsernameValid() : Boolean = ValidationError.validateUserName(userName)
 private fun LoginViewModel.SignUpData.isPasswordValid() : Boolean = ValidationError.validatePassword(password)
 private fun LoginViewModel.SignUpData.isEmailValid() : Boolean = ValidationError.validateEmail(email)
+private fun LoginViewModel.SignUpData.isPasswordEqualConfirmPassword(): Boolean = ValidationError.validateConfirmPassword(password,confirmPassword)
 
 
 

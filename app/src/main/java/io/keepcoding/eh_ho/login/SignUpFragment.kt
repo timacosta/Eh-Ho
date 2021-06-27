@@ -53,6 +53,10 @@ class SignUpFragment : Fragment() {
             if(!it) inputEmail.error = getString(R.string.invalid_email)
         }
 
+        vm.validConfirmPassword.observe(viewLifecycleOwner) {
+            if(!it) inputConfirmPassword.error = getString(R.string.invalid_confirm_password)
+        }
+
         vm.signUpEnabled.observe(viewLifecycleOwner) {
             buttonSignUp.isEnabled = it
         }

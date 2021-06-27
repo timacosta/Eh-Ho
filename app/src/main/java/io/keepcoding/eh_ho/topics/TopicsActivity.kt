@@ -63,7 +63,15 @@ class TopicsActivity : AppCompatActivity() {
     }
 
     private fun renderLoading(loadingState: TopicsViewModel.State.LoadingTopics) {
-        (loadingState as? TopicsViewModel.State.LoadingTopics.LoadingWithTopics)?.let { topicsAdapter.submitList(it.topics) }
+        when(loadingState) {
+            is TopicsViewModel.State.LoadingTopics.Loading -> {
+                binding.viewLoading.root.isVisible = true
+            }
+            is TopicsViewModel.State.LoadingTopics.LoadingWithTopics -> {
+                binding.swipePullToRefresh.isRefreshing = true
+                topicsAdapter.submitList(loadingState.topics)
+            }
+        }
     }
 
     companion object {
