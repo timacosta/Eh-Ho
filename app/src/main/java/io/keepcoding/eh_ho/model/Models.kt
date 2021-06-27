@@ -1,5 +1,7 @@
 package io.keepcoding.eh_ho.model
 
+import java.io.Serializable
+
 sealed class LogIn {
     data class Success(val userName: String) : LogIn()
     data class Error(val error: String) : LogIn()
@@ -12,15 +14,10 @@ data class Topic(
     val replyCount: Int,
     val lastPostedAt: String,
     val lastPosterUsername: String,
-//    val views: Int,
-//    val pinned: Boolean,
-//    val bumped: Boolean,
-
-)
+) : Serializable
 
 data class Post(
     val id: Int,
     val message: String,
     val username: String,
-    val avatar: String,
 )

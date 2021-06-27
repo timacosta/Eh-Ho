@@ -1,6 +1,7 @@
 package io.keepcoding.eh_ho.network
 
 import io.keepcoding.eh_ho.model.LogIn
+import io.keepcoding.eh_ho.model.Post
 import io.keepcoding.eh_ho.model.Topic
 import okhttp3.*
 import java.io.IOException
@@ -10,6 +11,7 @@ class Client(
         apiKey: String,
         private val okHttpClient: OkHttpClient,
 ) {
+
     private val requestBuilder = RequestBuilder(baseUrl, apiKey)
 
     fun signIn(
@@ -47,7 +49,14 @@ class Client(
         )
     }
 
-    //TODO: create getPosts
+    fun getPosts(topic:Topic, callback: Callback<Result<List<Post>>>) {
+        runRequest(
+            requestBuilder.postsRequest(topic.id),
+            {callback.onResponse(it)},
+            IOException::toPostsModel,
+            Response::toPostsModel,
+        )
+    }
 
     private fun <T> runRequest(
             request: Request,

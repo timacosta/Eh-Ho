@@ -1,6 +1,7 @@
 package io.keepcoding.eh_ho.network
 
 import io.keepcoding.eh_ho.model.LogIn
+import io.keepcoding.eh_ho.model.Post
 import io.keepcoding.eh_ho.model.Topic
 import okhttp3.Response
 import org.json.JSONArray
@@ -24,18 +25,20 @@ fun Response.toTopicsModel(): Result<List<Topic>> = when (this.isSuccessful) {
     false -> Result.failure(IOException(this.body?.string() ?: "Some Error parsing response"))
 }
 
-//TODO: toPostsModel
-
 fun IOException.toTopicsModel(): Result<List<Topic>> = Result.failure(this)
 
-//TODO: toPostsModel Exception
+fun Response.toPostsModel(): Result<List<Post>> = when (this.isSuccessful) {
+    true -> Result.success(parsePosts(body?.string())).also { println("TimLog: BackendResult -> $it") }
+    false -> Result.failure(IOException(this.body?.string() ?: "Some Error parsing response"))
+}
+
+fun IOException.toPostsModel(): Result<List<Post>> = Result.failure(this)
 
 fun parseTopics(json: String?): List<Topic> = json?.let {
     val topicsJsonArray: JSONArray = JSONObject(it).getJSONObject("topic_list").getJSONArray("topics")
     (0 until topicsJsonArray.length()).map { index ->
         val topicJsonObject = topicsJsonArray.getJSONObject(index)
         Topic(
-            //TODO: add more values
             id = topicJsonObject.getInt("id"),
             title = topicJsonObject.getString("title"),
             likeCount = topicJsonObject.getInt("like_count"),
@@ -46,4 +49,14 @@ fun parseTopics(json: String?): List<Topic> = json?.let {
     }
 } ?: emptyList<Topic>()
 
-//TODO: parsePosts
+fun parsePosts(json: String?): List<Post> = json?.let {
+    val postsJsonArray: JSONArray = JSONObject(it).getJSONObject("post_stream").getJSONArray("posts")
+    (0 until postsJsonArray.length()).map { index ->
+        val postJSONObject = postsJsonArray.getJSONObject(index)
+        Post(
+            id = postJSONObject.getInt("id"),
+            message = postJSONObject.getString("cooked"),
+            username = postJSONObject.getString("name"),
+        )
+    }
+} ?: emptyList()

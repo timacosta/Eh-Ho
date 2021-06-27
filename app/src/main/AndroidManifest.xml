@@ -23,6 +23,7 @@
         </activity>
 
         <activity android:name=".topics.TopicsActivity" />
+        <activity android:name=".posts.PostsActivity"/>
     </application>
 
 </manifest>
