@@ -26,11 +26,22 @@ class TopicsActivity : AppCompatActivity() {
         }
         vm.state.observe(this) {
             when (it) {
-                is TopicsViewModel.State.LoadingTopics -> renderLoading(it)
-                is TopicsViewModel.State.TopicsReceived -> topicsAdapter.submitList(it.topics)
-                is TopicsViewModel.State.NoTopics -> renderEmptyState()
+                is TopicsViewModel.State.LoadingTopics -> {
+                    renderLoading(it)
+                    hideEmptyState()
+                }
+                is TopicsViewModel.State.TopicsReceived -> {
+                    topicsAdapter.submitList(it.topics)
+                    hideEmptyState()
+                    hideLoading()
+                }
+                is TopicsViewModel.State.NoTopics -> {
+                    hideLoading()
+                    renderEmptyState()
+                }
             }
         }
+        binding.swipePullToRefresh.setOnRefreshListener { vm.loadTopics() }
     }
 
     override fun onResume() {
@@ -40,6 +51,15 @@ class TopicsActivity : AppCompatActivity() {
 
     private fun renderEmptyState() {
         binding.emptyResponse.isVisible = true
+    }
+
+    private fun hideEmptyState() {
+        binding.emptyResponse.isVisible = false
+    }
+
+    private fun hideLoading() {
+        binding.viewLoading.root.isVisible = false
+        binding.swipePullToRefresh.isRefreshing = false
     }
 
     private fun renderLoading(loadingState: TopicsViewModel.State.LoadingTopics) {
