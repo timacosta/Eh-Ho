@@ -10,6 +10,8 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
 import io.keepcoding.eh_ho.databinding.ActivityTopicsBinding
 import io.keepcoding.eh_ho.di.DIProvider
+import io.keepcoding.eh_ho.model.Topic
+import io.keepcoding.eh_ho.posts.PostsActivity
 
 class TopicsActivity : AppCompatActivity() {
 
@@ -73,6 +75,7 @@ class TopicsActivity : AppCompatActivity() {
             }
         }
     }
+
 
     companion object {
         @JvmStatic
