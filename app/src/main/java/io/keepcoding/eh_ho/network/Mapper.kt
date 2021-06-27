@@ -57,6 +57,9 @@ fun parsePosts(json: String?): List<Post> = json?.let {
             id = postJSONObject.getInt("id"),
             message = postJSONObject.getString("cooked"),
             username = postJSONObject.getString("name"),
+            replyCount = postJSONObject.getInt("reply_count"),
+            createdAt = postJSONObject.getString("created_at"),
+            reads = postJSONObject.getInt("reads")
         )
     }
 } ?: emptyList()

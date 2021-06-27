@@ -24,13 +24,9 @@ class PostsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        binding.postDetails.apply {
-            adapter = postsAdapter
-            DividerItemDecoration(
-                this@PostsActivity,
-                LinearLayout.VERTICAL
-            )
-        }
+        val recyclerView = binding.postDetails
+        recyclerView.adapter = postsAdapter
+        recyclerView.addItemDecoration(DividerItemDecoration(this@PostsActivity, LinearLayout.VERTICAL))
 
         vm.state.observe(this) {
             when (it) {

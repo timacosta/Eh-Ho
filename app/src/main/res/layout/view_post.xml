@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".posts.PostsActivity">
 
@@ -27,7 +27,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/ic_baseline_thumb_up_24"/>
+        android:background="@drawable/ic_baseline_mark_chat_read_24"/>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/likes_details"

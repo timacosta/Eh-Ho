@@ -20,4 +20,7 @@ data class Post(
     val id: Int,
     val message: String,
     val username: String,
+    val replyCount: Int,
+    val createdAt: String,
+    val reads: Int,
 )

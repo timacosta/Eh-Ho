@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import io.keepcoding.eh_ho.databinding.ViewPostBinding
 import io.keepcoding.eh_ho.extensions.inflater
 import io.keepcoding.eh_ho.model.Post
+import io.keepcoding.eh_ho.model.Topic
 
 class PostsAdapter(diffUtilItemCallback: DiffUtil.ItemCallback<Post> = DIFF) :
     ListAdapter<Post,PostsAdapter.PostViewHolder>(diffUtilItemCallback) {
@@ -37,8 +38,13 @@ class PostsAdapter(diffUtilItemCallback: DiffUtil.ItemCallback<Post> = DIFF) :
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(post: Post) {
-            binding.tvTopicName.text = HtmlCompat.fromHtml(post.message, HtmlCompat.FROM_HTML_MODE_LEGACY)
-            binding.tvTopicContent.text = post.username
+            binding.tvTopicName.text = post.username
+            binding.tvTopicContent.text = HtmlCompat.fromHtml(post.message, HtmlCompat.FROM_HTML_MODE_LEGACY)
+            binding.repliesDetails.text = post.replyCount.toString()
+            binding.dateDetails.text = post.createdAt.dropLast(14)
+            binding.likesDetails.text = post.reads.toString()
+            binding.lastUser.text = post.username
+
         }
 
     }
