@@ -35,7 +35,9 @@ class TopicsAdapter(diffUtilItemCallback: DiffUtil.ItemCallback<Topic> = DIFF) :
 
         fun bind(topic: Topic) {
             binding.title.text = topic.title
-            //TODO: bin more details
+            binding.likes.text = topic.likeCount.toString()
+            binding.replies.text = topic.replyCount.toString()
+            binding.date.text = topic.lastPostedAt.dropLast(14)
         }
     }
 }
