@@ -49,14 +49,24 @@ class ValidationErrorTest {
 
     //Apparently not able to test TextUtils, See:
     // http://tools.android.com/tech-docs/unit-testing-support#TOC-Method-...-not-mocked.-
+//    @Test
+//    fun validateEmailFalse_Test() {
+//        assertFalse(validationError.validateEmail(emailFalse))
+//    }
+//
+//    @Test
+//    fun validateEmailTrue_Test() {
+//        assertFalse(validationError.validateEmail(emailTrue))
+//    }
+
     @Test
-    fun validateEmailFalse_Test() {
-        assertFalse(validationError.validateEmail(emailFalse))
+    fun confirmPasswordTrue_Test() {
+        assertTrue(validationError.validateConfirmPassword(passwordTrue, passwordTrue))
     }
 
     @Test
-    fun validateEmailTrue_Test() {
-        assertFalse(validationError.validateEmail(emailTrue))
+    fun confirmPasswordFalse_Test() {
+        assertFalse(validationError.validateConfirmPassword(passwordTrue, passwordFalse))
     }
 
 }
