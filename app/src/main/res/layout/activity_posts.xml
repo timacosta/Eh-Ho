@@ -4,4 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <TextView
+        android:id="@+id/emptyResponse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Unable to show post details. Try again later"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        />
+
+
 </FrameLayout>
