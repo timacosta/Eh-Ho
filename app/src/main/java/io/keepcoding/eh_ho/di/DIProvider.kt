@@ -3,6 +3,7 @@ package io.keepcoding.eh_ho.di
 import android.content.Context
 import io.keepcoding.eh_ho.login.LoginViewModel
 import io.keepcoding.eh_ho.network.Client
+import io.keepcoding.eh_ho.posts.PostsViewModel
 import io.keepcoding.eh_ho.repository.Repository
 import io.keepcoding.eh_ho.topics.TopicsViewModel
 import okhttp3.OkHttpClient
@@ -20,9 +21,10 @@ object DIProvider {
     }
     private val client: Client by lazy { Client(DISCOURSE_URL, DISCOURSE_API_KEY, okHttpClient) }
     private val repository: Repository by lazy { Repository(client) }
-    //TODO: Include emailValidator / Password Validator
+
     val loginViewModelProviderFactory: LoginViewModel.LoginViewModelProviderFactory by lazy { LoginViewModel.LoginViewModelProviderFactory(repository) }
     val topicsViewModelProviderFactory: TopicsViewModel.TopicsViewModelProviderFactory by lazy { TopicsViewModel.TopicsViewModelProviderFactory(repository) }
+    val postsViewModelProviderFactory: PostsViewModel.PostsViewModelProviderFactory by lazy { PostsViewModel.PostsViewModelProviderFactory(repository) }
 
     fun init(context: Context) {
 
