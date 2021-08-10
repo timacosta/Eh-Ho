@@ -19,12 +19,13 @@ Android app, created using Kotlin that consumes [Discourse API](https://docs.dis
 
 - [MutableLiveData](https://developer.android.com/reference/android/arch/lifecycle/MutableLiveData)
 - [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) 
-- 
+- [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
 
 App Features:
 
-- Trend gif list with scrolling and refresh control
-- Description of each gif
-- Method to add a gif to the list, currently just mocking up a POST
+- Register form
+- Login form
+- RecyclerView implementation to render all topics
+- Details Activity to show details of each topic/post
 
 
