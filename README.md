@@ -10,7 +10,7 @@
 
 Android app, created using Kotlin that consumes [Discourse API](https://docs.discourse.org), showing a list of posts, topics and interactions of different users.  
 
-<img src="https://github.com/timacosta/Eh-Ho/blob/master/app/src/main/res/images/login.png" width="200" /> |  <img src="https://github.com/timacosta/Eh-Ho/blob/master/app/src/main/res/images/register.png" width="200" /> | <img src="https://github.com/timacosta/Eh-Ho/blob/master/app/src/main/res/images/topics.png" width="200" /> | <img src="https://github.com/timacosta/Eh-Ho/blob/master/app/src/main/res/images/details_2.png" width="200" /> | <img src="https://github.com/timacosta/Eh-Ho/blob/master/app/src/main/res/images/eh_ho_demo.webm" width="200" />
+<img src="https://github.com/timacosta/Eh-Ho/blob/master/app/src/main/res/images/login.png" width="200" /> |  <img src="https://github.com/timacosta/Eh-Ho/blob/master/app/src/main/res/images/register.png" width="200" /> | <img src="https://github.com/timacosta/Eh-Ho/blob/master/app/src/main/res/images/topics.png" width="200" /> | <img src="https://github.com/timacosta/Eh-Ho/blob/master/app/src/main/res/images/details_2.png" width="200" /> | <img src="https://github.com/timacosta/Eh-Ho/blob/master/app/src/main/res/images/eh_ho_demo.gif" width="200" />
 
 
 ## Implementations
