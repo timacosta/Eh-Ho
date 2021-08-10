@@ -15,11 +15,11 @@ Android app, created using Kotlin that consumes [Discourse API](https://docs.dis
 
 ## Implementations
 
-[React Native](https://reactnative.dev/) app based on ([React](https://es.reactjs.org/), using Atomic design as pattern and including the following libraries:
+[Android](https://developer.android.com), using MVVM as pattern, making use of Android Jetpack: 
 
-- [Axios](https://github.com/axios/axios)
-- [Redux](https://github.com/reduxjs/redux) 
-- [Redux Thunk](https://github.com/reduxjs/redux-thunk)
+- [MutableLiveData](https://developer.android.com/reference/android/arch/lifecycle/MutableLiveData)
+- [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) 
+- 
 
 App Features:
 
